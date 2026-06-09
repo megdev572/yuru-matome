@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ゆるまとめ ☕ - やさしいつぶやきまとめ</title>
+    <style>
+        /* CSSカスタムプロパティ（フレンチブルーカフェ） */
+        :root {
+            --bg-color: #F3F6F8; /* 漆喰や石畳のような、ほんのりグレーがかった淡い水色白 */
+            --text-color: #3E464C; /* カフェのドアや装飾のような、深みのあるチャコールココア（目に優しい） */
+            --link-color: #799AB3; /* ひさしとお揃いのパステルブルーグレー */
+            --header-bg: #BACDDB; /* お写真のひさしの「くすみ水色」 */
+            --header-border: #7A99AC; /* ひさしのふち用の少し濃いブルーグレー */
+            --title-color: #2F393E;
+            --subtitle-color: #5C676D;
+            --card-bg: #FFFFFF;
+            --card-shadow: rgba(120, 140, 150, 0.08); /* 影も少しブルーグレーにして馴染ませます */
+            --card-shadow-hover: rgba(120, 140, 150, 0.18);
+            --card-border: #E8EEF1;
+            --tweet-bg: #FAFBFD; /* つぶやき枠：明るいテラス光のような、青みがかった白 */
+            --tweet-border: #DFE7EC;
+            --btn-bg: #EFF4F7;
+            --btn-hover: #DFE8ED;
+        }
+
+        [data-theme="dark"] {
+            /* ダークモード：真夜中のカフェテラス（ミッドナイトブルー） */
+            --bg-color: #1A2126; 
+            --text-color: #E2E8EC; 
+            --link-color: #9EC0D6;
+            --header-bg: #28333B; 
+            --header-border: #3E4D57;
+            --title-color: #F1F5F8;
+            --subtitle-color: #A9B8C0;
+            --card-bg: #212B31;
+            --card-shadow: rgba(0, 0, 0, 0.3);
+            --card-shadow-hover: rgba(0, 0, 0, 0.4);
+            --card-border: #303E46;
+            --tweet-bg: #1B242A;
+            --tweet-border: #364650;
+            --btn-bg: #28333B;
+            --btn-hover: #364650;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.4s, border-color 0.4s, color 0.4s;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: "Hiragino Maru Gothic ProN", "Hiragino Kaku Gothic ProN", "YuGothic", "Meiryo", sans-serif;
+            line-height: 1.7;
+            padding-bottom: 60px;
+        }
+
+        a {
+            color: var(--link-color);
+            text-decoration: none;
+        }
+
+        /* ☕ お写真のような「縦のストライプ」をCSSで表現したヘッダー */
+        .site-header {
+            background-color: var(--header-bg);
+            background-image: repeating-linear-gradient(
+                90deg, /* 角度を90度にして垂直ストライプに */
+                var(--header-bg),
+                var(--header-bg) 35px,
+                #FFFFFF 35px,
+                #FFFFFF 70px
+            );
+            padding: 55px 20px 45px;
+            text-align: center;
+            border-bottom: 10px solid var(--header-border); /* ひさしのふち */
+            border-radius: 0 0 35px 35px;
+            position: relative;
+            box-shadow: 0 6px 18px var(--card-shadow);
+        }
+
+        .theme-toggle-container {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+        }
+
+        .theme-toggle-btn {
+            background-color: var(--card-bg);
+            color: var(--text-color);
+            border: 1px solid var(--card-border);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            cursor: pointer;
+            box-shadow: 0 2px 6px var(--card-shadow);
+        }
+
+        .theme-toggle-btn:hover {
+            background-color: var(--btn-hover);
+        }
+
+        /* 🎨 お店の銘板のような、二重枠線のフレンチ看板デザイン */
+        .site-title {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--title-color);
+            margin-bottom: 12px;
+            display: inline-block;
+            background-color: var(--card-bg);
+            padding: 8px 24px;
+            border-radius: 6px; /* 丸すぎず少しシャープに */
+            border: 2px solid var(--header-border); /* 外側の線 */
+            outline: 1px solid var(--header-border); /* 内側の線（二重線） */
+            outline-offset: -5px;
+            box-shadow: 0 4px 12px var(--card-shadow);
+        }
+
+        .site-subtitle {
+            font-size: 0.9rem;
+            color: var(--subtitle-color);
+            margin-top: 8px;
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.6);
+        }
+
+        .site-nav {
+            margin-top: 25px;
+        }
+
+        .site-nav ul {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            list-style: none;
+            flex-wrap: wrap;
+        }
+
+        .site-nav a {
+            background-color: var(--card-bg);
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            box-shadow: 0 2px 8px var(--card-shadow);
+            color: var(--text-color);
+            cursor: pointer;
+        }
+
+        .site-nav a:hover,
+        .site-nav a.active {
+            background-color: #E6EFF5; 
+            color: #4C5D6A;
+        }
+        [data-theme="dark"] .site-nav a:hover,
+        [data-theme="dark"] .site-nav a.active {
+            background-color: #31424E; 
+            color: #D2E2EC;
+        }
+
+        /* 💻 全体レイアウト */
+        .main-wrapper {
+            display: flex;
+            gap: 30px;
+            max-width: 1000px;
+            margin: 40px auto 0;
+            padding: 0 20px;
+            align-items: flex-start;
+        }
+
+        /* 左側：メイン記事エリア */
+        .main-container {
+            flex: 1;
+            min-width: 0;
+        }
+
+        /* 右側：サイドバー */
+        .sidebar {
+            width: 260px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .sidebar-widget {
+            background-color: var(--card-bg);
+            border-radius: 20px;
+            padding: 20px;
+            border: 1px solid var(--card-border);
+            box-shadow: 0 6px 16px var(--card-shadow);
+        }
+
+        .widget-title {
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: var(--title-color);
+            border-bottom: 2px dashed var(--header-border);
+            padding-bottom: 8px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .widget-list {
+            list-style: none;
+        }
+
+        .widget-list li {
+            font-size: 0.85rem;
+            border-bottom: 1px solid var(--bg-color);
+            padding: 8px 0;
+        }
+
+        .widget-list li:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .widget-list a {
+            color: var(--text-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .widget-list a:hover {
+            color: var(--link-color);
+        }
+
+        .omikuji-section {
+            background-color: var(--card-bg);
+            border-radius: 24px;
+            padding: 24px;
+            margin-bottom: 35px;
+            text-align: center;
+            border: 1.5px dashed var(--link-color);
+            box-shadow: 0 8px 24px var(--card-shadow);
+        }
+
+        .omikuji-btn {
+            background-color: #E6EFF5;
+            color: #4C5D6A;
+            border: none;
+            padding: 10px 24px;
+            border-radius: 24px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(120, 140, 150, 0.15);
+            transition: transform 0.2s;
+        }
+        [data-theme="dark"] .omikuji-btn {
+            background-color: #31424E;
+            color: #D2E2EC;
+        }
+
+        .omikuji-btn:hover {
+            transform: scale(1.03);
+        }
+
+        .omikuji-result {
+            margin-top: 15px;
+            font-size: 0.95rem;
+            color: var(--text-color);
+            min-height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--tweet-bg);
+            border-radius: 16px;
+            padding: 15px;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.4s ease-in-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .timeline-header {
+            text-align: center;
+            margin-bottom: 25px;
+            margin-top: 10px;
+        }
+
+        .timeline-title {
+            font-size: 1.4rem;
+            color: var(--title-color);
+        }
+
+        .timeline-subtitle {
+            font-size: 0.85rem;
+            color: var(--subtitle-color);
+            margin-top: 5px;
+        }
+
+        .timeline-list {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        /* まとめ記事大カード */
+        .tweet-card {
+            background-color: var(--card-bg);
+            border-radius: 24px;
+            padding: 28px;
+            box-shadow: 0 8px 24px var(--card-shadow);
+            border: 1px solid var(--card-border);
+            display: block;
+        }
+
+        .card-blue { border-left: 6px solid #D1E3E6; }
+        .card-pink { border-left: 6px solid #F5E6E8; }
+        .card-yellow { border-left: 6px solid #FCF4DD; }
+
+        .tweet-user-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .tweet-avatar {
+            font-size: 1.6rem;
+            width: 44px;
+            height: 44px;
+            background-color: var(--tweet-bg);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--card-border);
+            object-fit: cover;
+        }
+
+        .user-names {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .display-name {
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: var(--text-color);
+        }
+
+        .username {
+            font-size: 0.75rem;
+            color: var(--meta-color);
+        }
+
+        .tweet-date {
+            font-size: 0.75rem;
+            color: var(--meta-color);
+        }
+
+        .tweet-content {
+            font-size: 0.95rem;
+            color: var(--text-color);
+            line-height: 1.6;
+            margin-bottom: 16px;
+            white-space: pre-wrap;
+        }
+
+        .tweet-images {
+            margin: 12px 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .tweet-media-img {
+            max-width: 100%;
+            max-height: 300px;
+            border-radius: 12px;
+            object-fit: cover;
+            border: 1px solid var(--card-border);
+        }
+
+        /* 管理人コメント */
+        .admin-comment {
+            background-color: var(--btn-bg);
+            border-left: 4px solid var(--link-color);
+            padding: 16px 20px;
+            border-radius: 16px;
+            font-size: 0.9rem;
+            color: var(--text-color);
+            margin: 24px 0 10px;
+            line-height: 1.6;
+            box-shadow: 0 4px 12px var(--card-shadow);
+        }
+
+        .admin-comment-title {
+            font-weight: bold;
+            font-size: 0.8rem;
+            color: var(--link-color);
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .tweet-actions {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            border-top: 1px dashed var(--tweet-border);
+            padding-top: 14px;
+            margin-top: 18px;
+        }
+
+        .origin-link {
+            font-size: 0.8rem;
+            color: var(--link-color);
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin-left: auto;
+        }
+
+        .origin-link:hover {
+            text-decoration: underline;
+        }
+
+        .hokkori-btn {
+            background-color: var(--btn-bg);
+            color: var(--text-color);
+            border: 1px solid var(--card-border);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            box-shadow: 0 2px 4px var(--card-shadow);
+        }
+
+        .hokkori-btn:hover {
+            background-color: var(--btn-hover);
+        }
+
+        .pop {
+            animation: popEffect 0.2s ease-out;
+        }
+        @keyframes popEffect {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+            100% { transform: scale(1); }
+        }
+
+        .hokkori-icon {
+            font-size: 1rem;
+        }
+
+        .count {
+            font-weight: bold;
+        }
+
+        .category-tag {
+            display: inline-block;
+            font-size: 0.75rem;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-weight: bold;
+        }
+
+        /* カフェカラーに合わせたパステルタグ色 */
+        .tag-blue { background-color: #DDEBF0; color: #445B61; }
+        .tag-pink { background-color: #F3EBE7; color: #6E5B55; }
+        .tag-yellow { background-color: #EFECE0; color: #615E51; }
+
+        .site-footer {
+            text-align: center;
+            margin-top: 60px;
+            padding: 20px;
+            font-size: 0.8rem;
+            color: var(--meta-color);
+        }
+
+        @media (max-width: 900px) {
+            .main-wrapper {
+                flex-direction: column;
+                gap: 25px;
+            }
+            .sidebar {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .site-header {
+                padding: 40px 15px 20px;
+            }
+            .theme-toggle-container {
+                top: 8px;
+                right: 10px;
+            }
+            .site-title {
+                font-size: 1.5rem;
+            }
+            .main-container {
+                margin-top: 25px;
+            }
+            .tweet-card {
+                padding: 18px;
+                border-radius: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ヘッダーエリア（縦ストライプ・カフェひさし） -->
+    <header class="site-header">
+        <div class="theme-toggle-container">
+            <button id="theme-toggle" class="theme-toggle-btn">🌙 夜にする</button>
+        </div>
+        <div class="header-container">
+            <!-- ☕ 銘板（めいばん）をイメージした二重枠看板のタイトル -->
+            <h1 class="site-title">ゆるまとめ ☕</h1>
+            <p class="site-subtitle">ココロが少し軽くなる、やさしいつぶやきを集めました</p>
+        </div>
+        <nav class="site-nav">
+            <ul>
+                <li><a class="active" data-target="all">ホーム</a></li>
+                <li><a data-target="osampo">お散歩</a></li>
+                <li><a data-target="ocha">お茶の時間</a></li>
+                <li><a data-target="oyasumi">おやすみ前</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- メインレイアウト -->
+    <div class="main-wrapper">
+
+        <!-- 左側：メインコンテンツ -->
+        <main class="main-container">
+
+            <section class="omikuji-section">
+                <button class="omikuji-btn" onclick="drawFortune()">🍀 今のあなたへ（癒しのおみくじ）</button>
+                <div id="omikuji-result" class="omikuji-result">
+                    <p style="opacity: 0.7;">ボタンを押すと、あなたにぴったりの癒し言葉が届きます。</p>
+                </div>
+            </section>
+
+            <div class="timeline-header">
+                <h2 class="timeline-title">☁️ きょうのゆるつぶやき</h2>
+                <p class="timeline-subtitle">眺めるだけでほっとするタイムライン</p>
+            </div>
+
+            <div class="timeline-list">
+<!-- TIMELINE_PLACEHOLDER -->
+            </div>
+
+        </main>
+
+        <!-- 右側：サイドバーエリア -->
+        <aside class="sidebar">
+            
+            <!-- プロフィール（管理人めめんと） -->
+            <div class="sidebar-widget">
+                <h3 class="widget-title">🐾 このブログについて</h3>
+                <p style="font-size: 0.8rem; line-height: 1.6; opacity: 0.9;">
+                    管理人：めめんと<br>
+                    日々の忙しさから少し離れて、のんびりお茶を飲むように眺めていってくださいね。心がホッとする、やさしいつぶやきを集めています。
+                </p>
+            </div>
+
+            <!-- 日付でみる -->
+            <div class="sidebar-widget">
+                <h3 class="widget-title">📅 日付でみる</h3>
+                <ul class="widget-list">
+                    <li><a href="#">2026年6月9日 <span style="font-size:0.7rem; opacity:0.6;">(今日)</span></a></li>
+                    <li><a href="#">2026年6月8日</a></li>
+                    <li><a href="#">2026年6月7日</a></li>
+                    <li><a href="#">2026年6月6日</a></li>
+                </ul>
+            </div>
+
+            <!-- テーマ別 -->
+            <div class="sidebar-widget">
+                <h3 class="widget-title">📁 テーマでみる</h3>
+                <ul class="widget-list">
+                    <li><a data-target="osampo">お散歩あつめ ⛅</a></li>
+                    <li><a data-target="ocha">お茶の時間あつめ 🍵</a></li>
+                    <li><a data-target="oyasumi">おやすみ前あつめ 🌙</a></li>
+                </ul>
+            </div>
+
+        </aside>
+
+    </div> <!-- /main-wrapper -->
+
+    <footer class="site-footer">
+        <p>© 2026 ゆるまとめ. ゆっくり、自分のペースで。</p>
+    </footer>
+
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            if (currentTheme === 'dark') {
+                document.documentElement.removeAttribute('data-theme');
+                themeToggle.textContent = '🌙 夜にする';
+            } else {
+                document.documentElement.setAttribute('data-theme', 'dark');
+                themeToggle.textContent = '☀️ 昼にする';
+            }
+        });
+
+        const navLinks = document.querySelectorAll('.site-nav a, .widget-list a[data-target]');
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.forEach(l => l.classList.remove('active'));
+                
+                if (link.closest('.site-nav')) {
+                    link.classList.add('active');
+                }
+                
+                const targetCategory = link.getAttribute('data-target');
+                const activeCards = document.querySelectorAll('.tweet-card');
+                activeCards.forEach(card => {
+                    if (targetCategory === 'all' || card.classList.contains(targetCategory)) {
+                        card.style.display = 'block';
+                        card.classList.add('fade-in');
+                    } else {
+                        card.style.display = 'none';
+                        card.classList.remove('fade-in');
+                    }
+                });
+            });
+        });
+
+        function addHokkori(button) {
+            const countSpan = button.querySelector('.count');
+            let count = parseInt(countSpan.textContent);
+            countSpan.textContent = count + 1;
+            button.classList.add('pop');
+            setTimeout(() => {
+                button.classList.remove('pop');
+            }, 200);
+        }
+
+        const healingMessages = [
+            "今日はもう、がんばるのをやめてお布団と仲良くしましょう。🛌",
+            "温かいものを一口飲んで、ふぅーっと深呼吸。それだけで今日は大成功です。☕",
+            "誰かの期待に応えられなくても、あなたはあなたのままで 100点満点。💮",
+            "ちょっと疲れたら、美味しいものを一口食べて、あとは明日の自分に任せちゃおう。🍓",
+            "今感じている不安は、あなたが真面目に生きている証拠。まずは自分をぎゅっと褒めてね。🧸",
+            "今日は何もしなかった？いいえ、大切な心と体を守るために、上手に休めた素敵な一日です。☘️",
+            "ちょっと周りの音がうるさいときは、好きな音楽を聴いて耳を甘やかしてあげてね。🎧",
+            "できない日があってもいいよ。のんびり、カメさんのペースで一歩ずつ進みましょう。🐢",
+            "世界中のだれより、まずはあなた自身に「今日もお疲れ様」を。よくがんばりました。🌻"
+        ];
+
+        function drawFortune() {
+            const resultElement = document.getElementById('omikuji-result');
+            const randomIndex = Math.floor(Math.random() * healingMessages.length);
+            const chosenMessage = healingMessages[randomIndex];
+            resultElement.classList.remove('fade-in');
+            void resultElement.offsetWidth; 
+            resultElement.innerHTML = `<p class="fade-in" style="line-height:1.6;">${chosenMessage}</p>`;
+        }
+    </script>
+</body>
+</html>
