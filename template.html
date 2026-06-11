@@ -156,17 +156,17 @@
             color: #D2E2EC;
         }
 
-        /* 💻 3カラム（左サイド、メイン、右サイド）の全体レイアウト */
+        /* 💻 全体レイアウト */
         .main-wrapper {
             display: flex;
             gap: 25px;
-            max-width: 1200px; /* 3カラムなので全体幅を広くしました */
+            max-width: 1200px; 
             margin: 40px auto 0;
             padding: 0 20px;
             align-items: flex-start;
         }
 
-        /* 📢 左側：アフィリエイト用サイドバー */
+        /* 左側：アフィリエイト用サイドバー */
         .left-sidebar {
             width: 200px;
             display: flex;
@@ -496,14 +496,13 @@
             color: var(--meta-color);
         }
 
-        /* 📱 スマホ・タブレット（幅1000px以下）の時のレイアウト切り替え */
         @media (max-width: 1000px) {
             .main-wrapper {
                 flex-direction: column;
                 gap: 25px;
             }
             .left-sidebar {
-                display: none; /* 💡 スマホの狭い画面では左サイドバー（アフィリエイト）を非表示にしてスッキリさせます */
+                display: none; 
             }
             .sidebar {
                 width: 100%;
@@ -533,7 +532,6 @@
 </head>
 <body>
 
-    <!-- ヘッダーエリア -->
     <header class="site-header">
         <div class="theme-toggle-container">
             <button id="theme-toggle" class="theme-toggle-btn">🌙 夜にする</button>
@@ -552,15 +550,12 @@
         </nav>
     </header>
 
-    <!-- 💻 メイン外枠（3カラム構造） -->
     <div class="main-wrapper">
 
-        <!-- 📢 左側：アフィリエイト用サイドバー -->
         <aside class="left-sidebar">
             <div class="sidebar-widget">
                 <h3 class="widget-title">☕ ほっこりPR</h3>
                 
-                <!-- 💡 アフィリエイト商品1（ダミーです。後で自分のアフィリエイトタグに差し替え可能です） -->
                 <div class="affiliate-item" style="margin-bottom: 20px; text-align: center;">
                     <div style="background-color: var(--tweet-bg); border-radius: 12px; padding: 12px; border: 1px dashed var(--header-border);">
                         <span style="font-size: 2.2rem;">🍵</span>
@@ -570,7 +565,6 @@
                     </div>
                 </div>
 
-                <!-- 💡 アフィリエイト商品2 -->
                 <div class="affiliate-item" style="text-align: center;">
                     <div style="background-color: var(--tweet-bg); border-radius: 12px; padding: 12px; border: 1px dashed var(--header-border);">
                         <span style="font-size: 2.2rem;">🧸</span>
@@ -580,12 +574,9 @@
                     </div>
                 </div>
 
-                <!-- ※将来、AmazonやA8.netなどのバナーコードを直接貼りたい場合は、この widget の中にコードをコピペしてください。 -->
-
             </div>
         </aside>
 
-        <!-- 中央：メインコンテンツ -->
         <main class="main-container">
 
             <section class="omikuji-section">
@@ -606,10 +597,8 @@
 
         </main>
 
-        <!-- 右側：サイドバーエリア -->
         <aside class="sidebar">
             
-            <!-- プロフィール -->
             <div class="sidebar-widget">
                 <h3 class="widget-title">🐾 このブログについて</h3>
                 <p style="font-size: 0.8rem; line-height: 1.6; opacity: 0.9;">
@@ -618,15 +607,16 @@
                 </p>
             </div>
 
-            <!-- 📅 日付でみる（ここがPythonによって自動的に過去ログリストに書き換えられます） -->
+            <!-- 📅 日付でみる（自動書き換えのための目印を追加しました） -->
             <div class="sidebar-widget">
                 <h3 class="widget-title">📅 日付でみる</h3>
                 <ul class="widget-list">
+                    <!-- ARCHIVE_START -->
 <!-- ARCHIVE_PLACEHOLDER -->
+                    <!-- ARCHIVE_END -->
                 </ul>
             </div>
 
-            <!-- テーマ別 -->
             <div class="sidebar-widget">
                 <h3 class="widget-title">📁 テーマでみる</h3>
                 <ul class="widget-list">
@@ -638,7 +628,7 @@
 
         </aside>
 
-    </div> <!-- /main-wrapper -->
+    </div> 
 
     <footer class="site-footer">
         <p>© 2026 ゆるまとめ. ゆっくり、自分のペースで。</p>
@@ -667,50 +657,4 @@
                     link.classList.add('active');
                 }
                 
-                const targetCategory = link.getAttribute('data-target');
-                const activeCards = document.querySelectorAll('.tweet-card');
-                activeCards.forEach(card => {
-                    if (targetCategory === 'all' || card.classList.contains(targetCategory)) {
-                        card.style.display = 'block';
-                        card.classList.add('fade-in');
-                    } else {
-                        card.style.display = 'none';
-                        card.classList.remove('fade-in');
-                    }
-                });
-            });
-        });
-
-        function addHokkori(button) {
-            const countSpan = button.querySelector('.count');
-            let count = parseInt(countSpan.textContent);
-            countSpan.textContent = count + 1;
-            button.classList.add('pop');
-            setTimeout(() => {
-                button.classList.remove('pop');
-            }, 200);
-        }
-
-        const healingMessages = [
-            "今日はもう、がんばるのをやめてお布団と仲良くしましょう。🛌",
-            "温かいものを一口飲んで、ふぅーっと深呼吸。それだけで今日は大成功です。☕",
-            "誰かの期待に応えられなくても、あなたはあなたのままで 100点満点。💮",
-            "ちょっと疲れたら、美味しいものを一口食べて、あとは明日の自分に任せちゃおう。🍓",
-            "今感じている不安は、あなたが真面目に生きている証拠。まずは自分をぎゅっと褒めてね。🧸",
-            "今日は何もしなかった？いいえ、大切な心と体を守るために、上手に休めた素敵な一日です。☘️",
-            "ちょっと周りの音がうるさいときは、好きな音楽を聴いて耳を甘やかしてあげてね。🎧",
-            "できない日があってもいいよ。のんびり、カメさんのペースで一歩ずつ進みましょう。🐢",
-            "世界中のだれより、まずはあなた自身に「今日もお疲れ様」を。よくがんばりました。🌻"
-        ];
-
-        function drawFortune() {
-            const resultElement = document.getElementById('omikuji-result');
-            const randomIndex = Math.floor(Math.random() * healingMessages.length);
-            const chosenMessage = healingMessages[randomIndex];
-            resultElement.classList.remove('fade-in');
-            void resultElement.offsetWidth; 
-            resultElement.innerHTML = `<p class="fade-in" style="line-height:1.6;">${chosenMessage}</p>`;
-        }
-    </script>
-</body>
-</html>
+                const targetCategory = link.getAttribute('data-
