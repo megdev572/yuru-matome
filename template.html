@@ -156,7 +156,7 @@
             color: #D2E2EC;
         }
 
-        /* 💻 3カラムレイアウト */
+        /* 💻 全体レイアウト */
         .main-wrapper {
             display: flex;
             gap: 25px;
@@ -166,7 +166,7 @@
             align-items: flex-start;
         }
 
-        /* 📢 左側：アフィリエイト用サイドバー */
+        /* 左側：アフィリエイト用サイドバー */
         .left-sidebar {
             width: 200px;
             display: flex;
@@ -542,7 +542,6 @@
             <p class="site-subtitle">ココロが少し軽くなる、やさしいつぶやきを集めました</p>
         </div>
         
-        <!-- 💡 メニューのリンク先を実際のHTMLファイルに変更し、確実に動作するようにしました -->
         <nav class="site-nav">
             <ul>
                 <li><a href="index.html" id="nav-all">ホーム</a></li>
@@ -619,7 +618,6 @@
                 </ul>
             </div>
 
-            <!-- 💡 テーマでみるのリンク先を、過去ログが日付をまたいで一覧表示される専用HTMLに変更しました -->
             <div class="sidebar-widget">
                 <h3 class="widget-title">📁 テーマでみる</h3>
                 <ul class="widget-list">
@@ -651,7 +649,7 @@
             }
         });
 
-        // 🔗 どのページを開いていても、メニューの「下線（active）」をURLに合わせて自動切り替えするスマート機能
+        // 🔗 メニューのアクティブ下線切り替え
         const currentPath = window.location.pathname.split("/").pop();
         const navLinks = document.querySelectorAll('.site-nav a');
         navLinks.forEach(link => {
@@ -663,16 +661,38 @@
             }
         });
 
-        // 🍵 ほっこりボタンのカウントアップ
+        // 🍵 【新機能】ほっこりボタンのカウントアップ（ローカルストレージ保存版）
         function addHokkori(button) {
+            const cardId = button.getAttribute('data-id');
             const countSpan = button.querySelector('.count');
             let count = parseInt(countSpan.textContent);
-            countSpan.textContent = count + 1;
+            count++;
+            countSpan.textContent = count;
+            
+            // 💡 あなたのブラウザにカウント数をこっそり保存（メモ）します [2.3.9]
+            if (cardId) {
+                localStorage.setItem(cardId, count);
+            }
+            
             button.classList.add('pop');
             setTimeout(() => {
                 button.classList.remove('pop');
             }, 200);
         }
+
+        // 💡 ページ読み込み時に、ブラウザの記憶から各カードのほっこり数を復元します [2.3.9]
+        window.addEventListener('DOMContentLoaded', () => {
+            const hokkoriButtons = document.querySelectorAll('.hokkori-btn');
+            hokkoriButtons.forEach(button => {
+                const cardId = button.getAttribute('data-id');
+                if (cardId) {
+                    const savedCount = localStorage.getItem(cardId);
+                    if (savedCount) {
+                        button.querySelector('.count').textContent = savedCount;
+                    }
+                }
+            });
+        });
 
         // 🍀 おみくじメッセージ
         const healingMessages = [
