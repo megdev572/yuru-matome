@@ -503,9 +503,10 @@
             box-sizing: border-box !important;
             margin: 0 auto !important;
         }
-        
-        /* 全体を縦並びのコンパクトカードに変更 */
-        div[id^="msmaflink-"] .easyLinkEN {
+
+        /* 外側のボックス全体を縦並びのコンパクトカードに変更 */
+        div[id^="msmaflink-"] .easyLink-box {
+            display: flex !important;
             flex-direction: column !important;
             align-items: center !important;
             padding: 10px !important;
@@ -514,50 +515,69 @@
             background-color: var(--tweet-bg) !important;
             box-shadow: none !important;
             box-sizing: border-box !important;
+            width: 100% !important;
         }
 
         /* 添付画像のサイズと位置の調整 */
-        div[id^="msmaflink-"] .easyLinkImageBlock {
+        div[id^="msmaflink-"] .easyLink-img {
             margin: 0 0 10px 0 !important;
             width: 90px !important;
             height: 90px !important;
+            float: none !important; /* 元のfloat設定を解除 */
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
         }
         
-        div[id^="msmaflink-"] .easyLinkImageBlock img {
+        div[id^="msmaflink-"] .easyLink-img img {
             max-width: 90px !important;
             max-height: 90px !important;
             object-fit: contain !important;
         }
 
+        /* 情報エリア（テキスト部分）を縦幅内に収める設定 */
+        div[id^="msmaflink-"] .easyLink-info {
+            width: 100% !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            text-align: center !important;
+        }
+
         /* 商品名の文字サイズを小さくし、3行に制限して綺麗に収めます */
-        div[id^="msmaflink-"] .easyLinkTitle {
+        div[id^="msmaflink-"] p.easyLink-info-name {
+            margin-bottom: 8px !important;
+        }
+
+        div[id^="msmaflink-"] p.easyLink-info-name a {
             font-size: 0.75rem !important;
             line-height: 1.4 !important;
-            margin-bottom: 8px !important;
             text-align: center !important;
             display: -webkit-box !important;
             -webkit-line-clamp: 3 !important;
             -webkit-box-orient: vertical !important;
             overflow: hidden !important;
+            color: var(--text-color) !important;
         }
 
         /* メーカー名などの余計な記述を消してすっきりさせます */
-        div[id^="msmaflink-"] .easyLinkBrand,
-        div[id^="msmaflink-"] .easyLinkMaker {
+        div[id^="msmaflink-"] .easyLink-info-maker {
             display: none !important;
         }
 
         /* ボタンのレイアウトを縦並びにして、はみ出しを防ぎます */
-        div[id^="msmaflink-"] .easyLinkButtonBlock {
+        div[id^="msmaflink-"] p.easyLink-info-btn {
             margin: 5px 0 0 0 !important;
             width: 100% !important;
             text-align: center !important;
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 6px !important;
         }
 
-        div[id^="msmaflink-"] .easyLinkButtonBlock a {
+        div[id^="msmaflink-"] p.easyLink-info-btn a {
             display: block !important;
             width: 100% !important;
-            margin: 4px 0 !important;
+            margin: 0 !important;
             padding: 6px 0 !important;
             font-size: 0.75rem !important;
             border-radius: 15px !important;
@@ -652,25 +672,30 @@
                     <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
                     <!-- 💡 【2件目のアフィリエイト商品の貼り付け用スペース】 -->
                     <!-- 2つ目の商品を新しく紹介したいときは、 -->
-                    <!-- 以下の「<!-- ここに2つ目のコードを貼り付けます -->」の部分に、 -->
+                    <!-- 以下の「ここに2つ目のコードを貼り付けます」の部分に、 -->
                     <!-- かんたんリンクでコピーしたコードをそのまま貼り付けてください。 -->
                     <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
                     <div class="affiliate-item-container">
                         <!-- ここに2つ目のコードを貼り付けます -->
-
-                        <!-- ⚠️ 貼り付けるまでは、見本（ラベンダーアロマ）が表示されます。貼り付けたら、以下はすべて消して大丈夫です -->
-                        <div style="background-color: var(--tweet-bg); border-radius: 12px; padding: 12px; border: 1px dashed var(--header-border); text-align: center;">
-                            <span style="font-size: 2.2rem;">🧸</span>
-                            <h4 style="font-size: 0.8rem; margin: 8px 0 4px; font-weight: bold;">安眠ラベンダーアロマ</h4>
-                            <p style="font-size: 0.7rem; opacity: 0.8; margin-bottom: 10px; line-height: 1.4;">枕元にシュッとひと吹きで、眠る前の贅沢な癒し時間。</p>
-                        </div>
+                        <!-- START MoshimoAffiliateEasyLink -->
+                        <script type="text/javascript">
+                        (function(b,c,f,g,a,d,e){b.MoshimoAffiliateObject=a;
+                        b[a]=b[a]||function(){arguments.currentScript=c.currentScript
+                        ||c.scripts[c.scripts.length-2];(b[a].q=b[a].q||[]).push(arguments)};
+                        c.getElementById(a)||(d=c.createElement(f),d.src=g,
+                        d.id=a,e=c.getElementsByTagName("body")[0],e.appendChild(d))})
+                        (window,document,"script","//dn.msmstatic.com/site/cardlink/bundle.js?20220329","msmaflink");
+                        msmaflink({"n":"【 生活の木 公式 】ネムリラ ピロースプレー ラベンダー 30ml \/ 150ml \/ 300ml | アロマオイル アロマ エッセンシャルオイル 精油 ピローミスト 女性 男性 ラベンダー カモマイル 夏 夜 就寝 枕 おすすめ 誕生日 プレゼント お手軽","b":"","t":"","d":"https:\/\/thumbnail.image.rakuten.co.jp","c_p":"\/@0_mall\/treeoflife-official\/cabinet\/lifestyle\/nemurela","p":["\/imgrc0202225725.jpg","\/imgrc0186226483.jpg","\/nemurela_1_1.jpg"],"u":{"u":"https:\/\/item.rakuten.co.jp\/treeoflife-official\/080175110\/","t":"rakuten","r_v":""},"v":"2.1","b_l":[{"id":1,"u_tx":"楽天市場で見る","u_bc":"#f76956","u_url":"https:\/\/item.rakuten.co.jp\/treeoflife-official\/080175110\/","a_id":5638514,"p_id":54,"pl_id":27059,"pc_id":54,"s_n":"rakuten","u_so":1},{"id":2,"u_tx":"Yahoo!ショッピングで見る","u_bc":"#66a7ff","u_url":"https:\/\/shopping.yahoo.co.jp\/search?first=1\u0026p=%E3%80%90%20%E7%94%9F%E6%B4%BB%E3%81%AE%E6%9C%A8%20%E5%85%AC%E5%BC%8F%20%E3%80%91%E3%83%8D%E3%83%A0%E3%83%AA%E3%83%A9%20%E3%83%94%E3%83%AD%E3%83%BC%E3%82%B9%E3%83%97%E3%83%AC%E3%83%BC%20%E3%83%A9%E3%83%99%E3%83%B3%E3%83%80%E3%83%BC%2030ml%20%2F%20150ml%20%2F%20300ml%20%7C%20%E3%82%A2%E3%83%AD%E3%83%9E%E3%82%AA%E3%82%A4%E3%83%AB%20%E3%82%A2%E3%83%AD%E3%83%9E%20%E3%82%A8%E3%83%83%E3%82%BB%E3%83%B3%E3%82%B7%E3%83%A3%E3%83%AB%E3%82%AA%E3%82%A4%E3%83%AB%20%E7%B2%BE%E6%B2%B9%20%E3%83%94%E3%83%AD%E3%83%BC%E3%83%9F%E3%82%B9%E3%83%88%20%E5%A5%B3%E6%80%A7%20%E7%94%B7%E6%80%A7%20%E3%83%A9%E3%83%99%E3%83%B3%E3%83%80%E3%83%BC%20%E3%82%AB%E3%83%A2%E3%83%9E%E3%82%A4%E3%83%AB%20%E5%A4%8F%20%E5%A4%9C%20%E5%B0%B1%E5%AF%9D%20%E6%9E%95%20%E3%81%8A%E3%81%99%E3%81%99%E3%82%81%20%E8%AA%95%E7%94%9F%E6%97%A5%20%E3%83%97%E3%83%AC%E3%82%BC%E3%83%B3%E3%83%88%20%E3%81%8A%E6%89%8B%E8%BB%BD","a_id":5640200,"p_id":1225,"pl_id":27061,"pc_id":1925,"s_n":"yahoo","u_so":2}],"eid":"iu1Cc","s":"s"});
+                        </script>
+                        <div id="msmaflink-iu1Cc">リンク</div>
+                        <!-- MoshimoAffiliateEasyLink END -->
                     </div>
 
 
                     <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
                     <!-- 💡 【3件目のアフィリエイト商品の貼り付け用スペース】 -->
                     <!-- 3つ目の商品を追加したいときは、 -->
-                    <!-- 以下の「<!-- ここに3つ目のコードを貼り付けます -->」の部分にコードを貼り付けてください。 -->
+                    <!-- 以下の「ここに3つ目のコードを貼り付けます」の部分にコードを貼り付けてください。 -->
                     <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
                     <div class="affiliate-item-container">
                         <!-- ここに3つ目のコードを貼り付けます -->
@@ -687,7 +712,6 @@
                         <div id="msmaflink-hd2Ux">リンク</div>
                         <!-- MoshimoAffiliateEasyLink END -->
                     </div>
-
                 </div> <!-- /affiliate-list -->
 
             </div>
