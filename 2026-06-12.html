@@ -496,6 +496,95 @@
             color: var(--meta-color);
         }
 
+        /* 💡 【追加・お掃除CSS】もしもアフィリエイト「かんたんリンク」が狭いサイドバー内に完璧に収まるよう強制補正します */
+        div[id^="msmaflink-"] {
+            width: 100% !important;
+            max-width: 180px !important;
+            box-sizing: border-box !important;
+            margin: 0 auto !important;
+        }
+
+        /* 外側のボックス全体を縦並びのコンパクトカードに変更 */
+        div[id^="msmaflink-"] .easyLink-box {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            padding: 10px !important;
+            border: 1px dashed var(--header-border) !important;
+            border-radius: 12px !important;
+            background-color: var(--tweet-bg) !important;
+            box-shadow: none !important;
+            box-sizing: border-box !important;
+            width: 100% !important;
+        }
+
+        /* 添付画像のサイズと位置の調整 */
+        div[id^="msmaflink-"] .easyLink-img {
+            margin: 0 0 10px 0 !important;
+            width: 90px !important;
+            height: 90px !important;
+            float: none !important; /* 元のfloat設定を解除 */
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+        }
+        
+        div[id^="msmaflink-"] .easyLink-img img {
+            max-width: 90px !important;
+            max-height: 90px !important;
+            object-fit: contain !important;
+        }
+
+        /* 情報エリア（テキスト部分）を縦幅内に収める設定 */
+        div[id^="msmaflink-"] .easyLink-info {
+            width: 100% !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            text-align: center !important;
+        }
+
+        /* 商品名の文字サイズを小さくし、3行に制限して綺麗に収めます */
+        div[id^="msmaflink-"] p.easyLink-info-name {
+            margin-bottom: 8px !important;
+        }
+
+        div[id^="msmaflink-"] p.easyLink-info-name a {
+            font-size: 0.75rem !important;
+            line-height: 1.4 !important;
+            text-align: center !important;
+            display: -webkit-box !important;
+            -webkit-line-clamp: 3 !important;
+            -webkit-box-orient: vertical !important;
+            overflow: hidden !important;
+            color: var(--text-color) !important;
+        }
+
+        /* メーカー名などの余計な記述を消してすっきりさせます */
+        div[id^="msmaflink-"] .easyLink-info-maker {
+            display: none !important;
+        }
+
+        /* ボタンのレイアウトを縦並びにして、はみ出しを防ぎます */
+        div[id^="msmaflink-"] p.easyLink-info-btn {
+            margin: 5px 0 0 0 !important;
+            width: 100% !important;
+            text-align: center !important;
+            display: flex !important;
+            flex-direction: column !important;
+            gap: 6px !important;
+        }
+
+        div[id^="msmaflink-"] p.easyLink-info-btn a {
+            display: block !important;
+            width: 100% !important;
+            margin: 0 !important;
+            padding: 6px 0 !important;
+            font-size: 0.75rem !important;
+            border-radius: 15px !important;
+            text-align: center !important;
+            line-height: 1.1 !important;
+        }
+
         @media (max-width: 1000px) {
             .main-wrapper {
                 flex-direction: column;
