@@ -496,6 +496,20 @@
             color: var(--meta-color);
         }
 
+        /* 💡 【追加】もしもアフィリエイト「かんたんリンク」がサイドバー内に完璧に縦並びでフィットするように強制補正します */
+        div[id^="msmaflink-"] {
+            width: 100% !important;
+            box-sizing: border-box !important;
+            margin: 0 auto !important;
+        }
+        
+        div[id^="msmaflink-"] > div {
+            border: none !important; /* 二重線を消してブログに馴染ませます */
+            padding: 0 !important;
+            background-color: transparent !important;
+            box-shadow: none !important;
+        }
+
         @media (max-width: 1000px) {
             .main-wrapper {
                 flex-direction: column;
@@ -541,7 +555,6 @@
             <h1 class="site-title">ゆるまとめ ☕</h1>
             <p class="site-subtitle">ココロが少し軽くなる、やさしいつぶやきを集めました</p>
         </div>
-        
         <nav class="site-nav">
             <ul>
                 <li><a href="index.html" id="nav-all">ホーム</a></li>
@@ -554,31 +567,41 @@
 
     <div class="main-wrapper">
 
+        <!-- 📢 左側：アフィリエイト用サイドバー -->
         <aside class="left-sidebar">
-            <div class="sidebar-widget">
-                <h3 class="widget-title">☕ ほっこりPR</h3>
+            <div class="sidebar-widget" style="padding: 12px;">
+                <h3 class="widget-title" style="margin-bottom: 15px;">☕ ほっこりPR</h3>
                 
-                <div class="affiliate-item" style="margin-bottom: 20px; text-align: center;">
-                    <div style="background-color: var(--tweet-bg); border-radius: 12px; padding: 12px; border: 1px dashed var(--header-border);">
-                        <span style="font-size: 2.2rem;">🍵</span>
-                        <h4 style="font-size: 0.8rem; margin: 8px 0 4px; font-weight: bold;">心が休まるほうじ茶</h4>
-                        <p style="font-size: 0.7rem; opacity: 0.8; margin-bottom: 10px; line-height: 1.4;">おやすみ前の新習慣に、優しい香りの一杯を。</p>
-                        <a href="#" style="background-color: var(--link-color); color: #FFF; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; display: inline-block; font-weight: bold;">詳細をみる ➔</a>
-                    </div>
+                <!-- 💡 【1番目の商品】お預かりした本物の「ぜいたくルイボスティー みつりんご」をきれいに組み込みました！ -->
+                <div class="affiliate-item" style="margin-bottom: 24px;">
+                    <!-- START MoshimoAffiliateEasyLink -->
+                    <script type="text/javascript">
+                    (function(b,c,f,g,a,d,e){b.MoshimoAffiliateObject=a;
+                    b[a]=b[a]||function(){arguments.currentScript=c.currentScript
+                    ||c.scripts[c.scripts.length-2];(b[a].q=b[a].q||[]).push(arguments)};
+                    c.getElementById(a)||(d=c.createElement(f),d.src=g,
+                    d.id=a,e=c.getElementsByTagName("body")[0],e.appendChild(d))})
+                    (window,document,"script","//dn.msmstatic.com/site/cardlink/bundle.js?20220329","msmaflink");
+                    msmaflink({"n":"《花弁入り》ぜいたくルイボスティー みつりんご 15個入 ( ノンカフェイン フレーバー アップルティー アレンジルイボスティー フレーバーティー ハーブティー プレゼント ギフト 水出し ティーバッグ ティーパック ティーライフ )","b":"","t":"","d":"https:\/\/thumbnail.image.rakuten.co.jp","c_p":"\/","p":["@0_mall\/tea-life\/cabinet\/rooibos\/arrange\/apple\/93441_thumb.jpg","@0_mall\/tea-life\/cabinet\/rooibos\/arrange\/apple\/93441_01.jpg","@0_gold\/tea-life\/minikuru\/review\/93441.png"],"u":{"u":"https:\/\/item.rakuten.co.jp\/tea-life\/93441\/","t":"rakuten","r_v":""},"v":"2.1","b_l":[{"id":1,"u_tx":"楽天市場で見る","u_bc":"#f76956","u_url":"https:\/\/item.rakuten.co.jp\/tea-life\/93441\/","a_id":5638514,"p_id":54,"pl_id":27059,"pc_id":54,"s_n":"rakuten","u_so":1}],"eid":"2Bo7W","s":"s"});
+                    </script>
+                    <div id="msmaflink-2Bo7W">リンク</div>
+                    <!-- MoshimoAffiliateEasyLink END -->
                 </div>
 
+                <!-- 💡 【2番目の商品】将来「安眠アロマ」などのコードを取得した時用に、いつでもコピペで差し替えられる予備枠を残してあります。 -->
                 <div class="affiliate-item" style="text-align: center;">
                     <div style="background-color: var(--tweet-bg); border-radius: 12px; padding: 12px; border: 1px dashed var(--header-border);">
                         <span style="font-size: 2.2rem;">🧸</span>
                         <h4 style="font-size: 0.8rem; margin: 8px 0 4px; font-weight: bold;">安眠ラベンダーアロマ</h4>
                         <p style="font-size: 0.7rem; opacity: 0.8; margin-bottom: 10px; line-height: 1.4;">枕元にシュッとひと吹きで、眠る前の贅沢な癒し時間。</p>
-                        <a href="#" style="background-color: var(--link-color); color: #FFF; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; display: inline-block; font-weight: bold;">詳細をみる ➔</a>
+                        <a href="#" style="background-color: var(--link-color); color: #FFF; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; display: inline-block; font-weight: bold;">（ここはまだ見本です）</a>
                     </div>
                 </div>
 
             </div>
         </aside>
 
+        <!-- 中央：メインコンテンツ -->
         <main class="main-container">
 
             <section class="omikuji-section">
@@ -607,70 +630,79 @@
                 <div class="mini-tweet" style="background-color: var(--tweet-bg); border: 1px solid var(--tweet-border); border-radius: 16px; padding: 18px; box-shadow: 0 2px 8px var(--card-shadow); margin-bottom: 4px;">
                     <div class="tweet-user-info">
                         <div class="user-profile">
-                            <img src="https://cdn.bsky.app/img/avatar/plain/did:plc:sdrws5y4tofeo6j4ksao6mt5/bafkreicttducfsixjwrekol5d65o2ps4r5dyn4kgy7i7kfsln2qrauri7q" class="tweet-avatar" alt="avatar">
+                            <img src="https://cdn.bsky.app/img/avatar/plain/did:plc:vmwkuxftvibobafkafj2jegm/bafkreiemcover3mmsjiptmxxs5vhn25txlor7on7moiklmqjz52db2jbri" class="tweet-avatar" alt="avatar">
                             <div class="user-names">
-                                <span class="display-name">しおり | 世の中のカラクリ</span>
-                                <span class="username">@karakuri-ch.bsky.social</span>
+                                <span class="display-name">Elle</span>
+                                <span class="username">@ellemicro.bsky.social</span>
                             </div>
                         </div>
-                        <span class="tweet-date">2026-06-17 09:31</span>
+                        <span class="tweet-date">2026-06-17 13:29</span>
                     </div>
-                    <p class="tweet-content" style="font-size: 0.9rem; margin-bottom: 10px;">スイカズラの豆知識、とっても素敵ですね！白から黄色に変わる様子を金と銀に例えるなんて、昔の人の感性は面白いですよね。実は夕方になると香りが一段と強くなるので、お散歩中に甘い香りがしてきたら、ぜひ近くを探してみてください。二つの花が寄り添って咲く姿、見つけると嬉しくなりませんか？✨</p>
-                    
+                    <p class="tweet-content" style="font-size: 0.9rem; margin-bottom: 10px;">推しのネッシーとうちの子ぬい連れてお散歩してきた
+
+帰ってきたので仕事だ仕事！
+やるぞやるぞやるぞ</p>
+                    <div class="tweet-images"><img src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:vmwkuxftvibobafkafj2jegm/bafkreifvja5up6m3opv4zuz5oiiunncj5abssrbos45q7dx6bi3creg4cq" alt="" class="tweet-media-img"></div>
                     <div style="display: flex; justify-content: flex-end; margin-top: 8px;">
-                        <a href="https://bsky.app/profile/karakuri-ch.bsky.social/post/3moh2rtwusv2l" target="_blank" class="origin-link" style="font-size: 0.75rem;">元の投稿 🔗</a>
+                        <a href="https://bsky.app/profile/ellemicro.bsky.social/post/3mohi2tkdok2a" target="_blank" class="origin-link" style="font-size: 0.75rem;">元の投稿 🔗</a>
                     </div>
                 </div>
                 <div class="mini-tweet" style="background-color: var(--tweet-bg); border: 1px solid var(--tweet-border); border-radius: 16px; padding: 18px; box-shadow: 0 2px 8px var(--card-shadow); margin-bottom: 4px;">
                     <div class="tweet-user-info">
                         <div class="user-profile">
-                            <img src="https://cdn.bsky.app/img/avatar/plain/did:plc:wphcaesvkqyr2zd6jx2hzf6j/bafkreifnxngczcwjtrl2ar3622bdaqqfyjhreda3bc4xgrg5unbetlmgmi" class="tweet-avatar" alt="avatar">
+                            <img src="https://cdn.bsky.app/img/avatar/plain/did:plc:be54q2fjnhim3y73mcrzoqct/bafkreihpk7ggfx5ko2ojk6zzqpuivl6yvgplfa7ig5a4ujpunrpkeb64vy" class="tweet-avatar" alt="avatar">
                             <div class="user-names">
-                                <span class="display-name">宮田珠己</span>
-                                <span class="username">@teoponposs.bsky.social</span>
+                                <span class="display-name">たかぴぃ</span>
+                                <span class="username">@takapy1555.bsky.social</span>
                             </div>
                         </div>
-                        <span class="tweet-date">2026-06-17 09:29</span>
+                        <span class="tweet-date">2026-06-17 13:23</span>
                     </div>
-                    <p class="tweet-content" style="font-size: 0.9rem; margin-bottom: 10px;">NHKのあさイチで、散歩特集をやっていた。日陰を図示してくれる散歩アプリがあるらしい。これからの季節使えるかもしれん。</p>
+                    <p class="tweet-content" style="font-size: 0.9rem; margin-bottom: 10px;">仮釈お散歩部は気温上昇に伴って、活動を休止しました
+本日からは仮釈シエスタ部として活動して参ります</p>
                     
                     <div style="display: flex; justify-content: flex-end; margin-top: 8px;">
-                        <a href="https://bsky.app/profile/teoponposs.bsky.social/post/3moh2mposd22h" target="_blank" class="origin-link" style="font-size: 0.75rem;">元の投稿 🔗</a>
+                        <a href="https://bsky.app/profile/takapy1555.bsky.social/post/3mohhpaqpic27" target="_blank" class="origin-link" style="font-size: 0.75rem;">元の投稿 🔗</a>
                     </div>
                 </div>
                 <div class="mini-tweet" style="background-color: var(--tweet-bg); border: 1px solid var(--tweet-border); border-radius: 16px; padding: 18px; box-shadow: 0 2px 8px var(--card-shadow); margin-bottom: 4px;">
                     <div class="tweet-user-info">
                         <div class="user-profile">
-                            <img src="https://cdn.bsky.app/img/avatar/plain/did:plc:5dmwadyv7uksskv4w4hhyxxm/bafkreied3zq53yw4ky3u2puulen5fu5zl4k2hgah3766hzmekogjl3kagi" class="tweet-avatar" alt="avatar">
+                            <img src="https://cdn.bsky.app/img/avatar/plain/did:plc:flx6itxhir3mjsji7lsf4m35/bafkreifikrvm6esvvrmqujkyfp6gkousmearzk4vuesbs57rjvbfve42na" class="tweet-avatar" alt="avatar">
                             <div class="user-names">
-                                <span class="display-name">池</span>
-                                <span class="username">@hey0n.bsky.social</span>
+                                <span class="display-name">wan</span>
+                                <span class="username">@w-a-n.bsky.social</span>
                             </div>
                         </div>
-                        <span class="tweet-date">2026-06-17 09:15</span>
+                        <span class="tweet-date">2026-06-17 13:23</span>
                     </div>
-                    <p class="tweet-content" style="font-size: 0.9rem; margin-bottom: 10px;">朝の散歩、少し長めに歩けた🎶</p>
-                    
+                    <p class="tweet-content" style="font-size: 0.9rem; margin-bottom: 10px;">街角スナップ 平和な日常 peaceful days May.2026
+新宿三丁目
+Lumix GX7 + M.ZUIKO DIGITAL ED 9-18mm
+#散歩 #路地裏 #写真 #キリトリセカイ #旅行 #電線 #StreetPhotography #photography #travelphotography📷 #Cityscape #landscape #backalley #tokyo #japan</p>
+                    <div class="tweet-images"><img src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:flx6itxhir3mjsji7lsf4m35/bafkreiautjuw4oldxxr5zb6ffqefiiwjvtjokm34mosvlhwnhm2ib4zn2a" alt="" class="tweet-media-img"></div>
                     <div style="display: flex; justify-content: flex-end; margin-top: 8px;">
-                        <a href="https://bsky.app/profile/hey0n.bsky.social/post/3mogzvbc3m72t" target="_blank" class="origin-link" style="font-size: 0.75rem;">元の投稿 🔗</a>
+                        <a href="https://bsky.app/profile/w-a-n.bsky.social/post/3mohhp6c4tk25" target="_blank" class="origin-link" style="font-size: 0.75rem;">元の投稿 🔗</a>
                     </div>
                 </div>
                 <div class="mini-tweet" style="background-color: var(--tweet-bg); border: 1px solid var(--tweet-border); border-radius: 16px; padding: 18px; box-shadow: 0 2px 8px var(--card-shadow); margin-bottom: 4px;">
                     <div class="tweet-user-info">
                         <div class="user-profile">
-                            <img src="https://cdn.bsky.app/img/avatar/plain/did:plc:44pb7ekfyytpfrwu7jksoxhq/bafkreiftwwut6c3xo6wm566ipiidsluxogmrth7xy63noidktabgqlar2a" class="tweet-avatar" alt="avatar">
+                            <img src="https://cdn.bsky.app/img/avatar/plain/did:plc:srscrd73smofwf2uvddxt7ie/bafkreifj6jjg4xkezp3p7cp46wyavtn42d7uh2chstgaq4lxr34y6rnb4i" class="tweet-avatar" alt="avatar">
                             <div class="user-names">
-                                <span class="display-name">KU</span>
-                                <span class="username">@papanicolaou.bsky.social</span>
+                                <span class="display-name">ピロ助</span>
+                                <span class="username">@pirosuke89.bsky.social</span>
                             </div>
                         </div>
-                        <span class="tweet-date">2026-06-17 09:15</span>
+                        <span class="tweet-date">2026-06-17 13:21</span>
                     </div>
-                    <p class="tweet-content" style="font-size: 0.9rem; margin-bottom: 10px;">昨日はコロコロして過ごしたせいで
-からだが散歩を求めてる</p>
-                    
+                    <p class="tweet-content" style="font-size: 0.9rem; margin-bottom: 10px;">散歩中に凛々しいカラスがいたので、トラベラーズノートに描き描き
+
+＃カラス
+＃トラベラーズノート</p>
+                    <div class="tweet-images"><img src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:srscrd73smofwf2uvddxt7ie/bafkreiedahp4crz56okbynn375y5ke6uxxqxaf7qglzjhbc346uhrm336q" alt="" class="tweet-media-img"></div>
                     <div style="display: flex; justify-content: flex-end; margin-top: 8px;">
-                        <a href="https://bsky.app/profile/papanicolaou.bsky.social/post/3mogzubm3tc24" target="_blank" class="origin-link" style="font-size: 0.75rem;">元の投稿 🔗</a>
+                        <a href="https://bsky.app/profile/pirosuke89.bsky.social/post/3mohhlufq4s2z" target="_blank" class="origin-link" style="font-size: 0.75rem;">元の投稿 🔗</a>
                     </div>
                 </div>
             </div>
@@ -678,7 +710,7 @@
             <!-- グループの最後に管理人コメントを追加 -->
             <div class="admin-comment">
                 <div class="admin-comment-title">🐾 管理人コメント</div>
-                <p>散歩が気持ちいいですね🐾</p>
+                <p>お散歩に、ネッシーちゃんとお子さんと、素敵な時間を過ごしたね🐾</p>
             </div>
             
             <!-- まとめ単位での「ほっこりした」ボタン（data-idを付与） -->
@@ -702,71 +734,75 @@
                 <div class="mini-tweet" style="background-color: var(--tweet-bg); border: 1px solid var(--tweet-border); border-radius: 16px; padding: 18px; box-shadow: 0 2px 8px var(--card-shadow); margin-bottom: 4px;">
                     <div class="tweet-user-info">
                         <div class="user-profile">
-                            <img src="https://cdn.bsky.app/img/avatar/plain/did:plc:jwqf4zr75v5olwkhwkdrjsxz/bafkreieig4dz3caom66ep5eiu2kwlb6uvrgikunuwvpxld6olsdq3kcmmu" class="tweet-avatar" alt="avatar">
+                            <img src="https://cdn.bsky.app/img/avatar/plain/did:plc:djha7dm7ukej5gk46hvnjmmm/bafkreie5kpdpdnm34b5lgscisux2e43dnfcts2fbwit54dkongnaucf2wi" class="tweet-avatar" alt="avatar">
                             <div class="user-names">
-                                <span class="display-name">まるきち３号</span>
-                                <span class="username">@marukiti.bsky.social</span>
+                                <span class="display-name">星空モチ</span>
+                                <span class="username">@hoshizoramochi.bsky.social</span>
                             </div>
                         </div>
-                        <span class="tweet-date">2026-06-17 09:16</span>
+                        <span class="tweet-date">2026-06-17 13:22</span>
                     </div>
-                    <p class="tweet-content" style="font-size: 0.9rem; margin-bottom: 10px;">少しでも身体を動かさなくては〜と思って、休みの日はぽてぽてウォーキングしてる。そして体重が増えた・・・
-カフェを見つけたり美味しいもの買ったり知らないパン屋さんにふらふら吸い寄せられたりしちゃうのが楽しくて。
-おつまみ買うのが散歩の楽しみ〜と保冷バッグ用意して行く岡部さん。わかる、わかるよ。</p>
-                    
+                    <p class="tweet-content" style="font-size: 0.9rem; margin-bottom: 10px;">午後もお仕事や勉強、お疲れ様です🌿公園をお散歩してたら、可愛いワンコと仲良くなっちゃいました🐶🐾このつぶらな瞳に見つめられたら、もう離れられない…！みんなもこの笑顔で午後からのエネルギーをチャージしてね✨ #AI生成 #AI美女</p>
+                    <div class="tweet-images"><img src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:djha7dm7ukej5gk46hvnjmmm/bafkreibvcf35no6qpd5kvrhwouwhepucxx6oj7oklj5pdxqu3y26czsnb4" alt="緑豊かな公園の木々を背景に、明るい茶髪のロングヘアをした美しい女性が、ゴールデンレトリバーの子犬を優しく抱きしめているAI生成の画像。女性はカメラに向かって穏やかに微笑んでおり、子犬は彼女の頬にぴったりと顔を寄せています。女性の手が子犬のあごの下に添えられており、温かみのある自然光に包まれた癒やしの1枚です。" class="tweet-media-img"></div>
                     <div style="display: flex; justify-content: flex-end; margin-top: 8px;">
-                        <a href="https://bsky.app/profile/marukiti.bsky.social/post/3mogzvpf4os2c" target="_blank" class="origin-link" style="font-size: 0.75rem;">元の投稿 🔗</a>
+                        <a href="https://bsky.app/profile/hoshizoramochi.bsky.social/post/3mohhnldpyc2h" target="_blank" class="origin-link" style="font-size: 0.75rem;">元の投稿 🔗</a>
                     </div>
                 </div>
                 <div class="mini-tweet" style="background-color: var(--tweet-bg); border: 1px solid var(--tweet-border); border-radius: 16px; padding: 18px; box-shadow: 0 2px 8px var(--card-shadow); margin-bottom: 4px;">
                     <div class="tweet-user-info">
                         <div class="user-profile">
-                            <img src="https://cdn.bsky.app/img/avatar/plain/did:plc:p6c7j4ebsizyly7madhl3hhn/bafkreiepyja7miresflwlxptzkpwig3oiwveol6so5exxa7as4xsd5g2iq" class="tweet-avatar" alt="avatar">
+                            <img src="https://cdn.bsky.app/img/avatar/plain/did:plc:bpq2sxexmxmyurpfnf4p3ket/bafkreifumcirfquywq4zyfseqgicdgeldq2er3fx2fhyf7uhjkmxdkyu4e" class="tweet-avatar" alt="avatar">
                             <div class="user-names">
-                                <span class="display-name">無言</span>
-                                <span class="username">@km5591hi.bsky.social</span>
+                                <span class="display-name">ばんだい</span>
+                                <span class="username">@bandai1002.bsky.social</span>
                             </div>
                         </div>
-                        <span class="tweet-date">2026-06-17 08:47</span>
+                        <span class="tweet-date">2026-06-17 13:17</span>
                     </div>
-                    <p class="tweet-content" style="font-size: 0.9rem; margin-bottom: 10px;">付き合ってないけど（？！）デートで映画見に行ってカップルシートしか空いてなくて🦔クンはそんなものの存在に疎いので「こんな広い席が空いてるなんてラッキーだったな！やっぱり犭白枝はすごいな！」って屈託ない笑顔で気にせず座ってほっこりハートフルな動物映画のはずが濃厚なラブシーンがあって触れ合った太ももからビクッと🦔クンが身動ぎするのを感じて横目で見たらギュッと目を閉じててラブシーンが終わったらホッと息を吐いて🍀の視線に気付くと顔を寄せて来て肩をくっ付けて「…びっくりしたな」って照れ臭そうに小声で話してきて曰向クンキミの才能は超高木交級の彼女では？と考えるほどガチ恋距離される🍀</p>
-                    
+                    <p class="tweet-content" style="font-size: 0.9rem; margin-bottom: 10px;">だいぶ前に散歩から帰ったあ。
+
+今日は晴れて風が吹いて暖かかった。
+日向は暑いけど風が吹いているからそんなには暑くはなかった。
+
+写真はミカエルマスデージー(またはチョウセンシオンやアズマギクかも？)とヘメロカリス(デイリリー)とバラの花かなあと思って撮った。</p>
+                    <div class="tweet-images"><img src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:bpq2sxexmxmyurpfnf4p3ket/bafkreiatqxwthynfmzawl77gdrp7vepuvhuuvuddp6b45mr7of5oy6eq7i" alt="花" class="tweet-media-img"></div>
                     <div style="display: flex; justify-content: flex-end; margin-top: 8px;">
-                        <a href="https://bsky.app/profile/km5591hi.bsky.social/post/3mogycw2qns2p" target="_blank" class="origin-link" style="font-size: 0.75rem;">元の投稿 🔗</a>
+                        <a href="https://bsky.app/profile/bandai1002.bsky.social/post/3mohhez3bck2b" target="_blank" class="origin-link" style="font-size: 0.75rem;">元の投稿 🔗</a>
                     </div>
                 </div>
                 <div class="mini-tweet" style="background-color: var(--tweet-bg); border: 1px solid var(--tweet-border); border-radius: 16px; padding: 18px; box-shadow: 0 2px 8px var(--card-shadow); margin-bottom: 4px;">
                     <div class="tweet-user-info">
                         <div class="user-profile">
-                            <img src="https://cdn.bsky.app/img/avatar/plain/did:plc:yp23vqab4xeue7zcwmohtglk/bafkreifhl7pboyvu42q2cnuchwwvqyyrwm3tcgmiubazjsj3vtawc3a4a4" class="tweet-avatar" alt="avatar">
+                            <img src="https://cdn.bsky.app/img/avatar/plain/did:plc:4wutma2ywoh6wli27dhwjk63/bafkreifbrvwfl5ia6v74moorm5732nxhiye2gpd6gey5ndzudwseg3jbou" class="tweet-avatar" alt="avatar">
                             <div class="user-names">
-                                <span class="display-name">しゃば</span>
-                                <span class="username">@chavannes.bsky.social</span>
+                                <span class="display-name">とろろ</span>
+                                <span class="username">@ainisaem.bsky.social</span>
                             </div>
                         </div>
-                        <span class="tweet-date">2026-06-17 07:53</span>
+                        <span class="tweet-date">2026-06-17 13:04</span>
                     </div>
-                    <p class="tweet-content" style="font-size: 0.9rem; margin-bottom: 10px;">ついに長年使ってきた化粧下地がなくなりそうでほにゃほにゃ………</p>
+                    <p class="tweet-content" style="font-size: 0.9rem; margin-bottom: 10px;">散歩してたら、可愛い犬に遭遇して幸せ　
+</p>
                     
                     <div style="display: flex; justify-content: flex-end; margin-top: 8px;">
-                        <a href="https://bsky.app/profile/chavannes.bsky.social/post/3mogvb4sjbs2q" target="_blank" class="origin-link" style="font-size: 0.75rem;">元の投稿 🔗</a>
+                        <a href="https://bsky.app/profile/ainisaem.bsky.social/post/3mohgoec7ob2g" target="_blank" class="origin-link" style="font-size: 0.75rem;">元の投稿 🔗</a>
                     </div>
                 </div>
                 <div class="mini-tweet" style="background-color: var(--tweet-bg); border: 1px solid var(--tweet-border); border-radius: 16px; padding: 18px; box-shadow: 0 2px 8px var(--card-shadow); margin-bottom: 4px;">
                     <div class="tweet-user-info">
                         <div class="user-profile">
-                            <img src="https://cdn.bsky.app/img/avatar/plain/did:plc:dioawt35zi7n4x4sdmz47kgi/bafkreigwo7bkdnph73vpwtvl6aaiil5lie6n4l2b7p3s2hgus2gj5a5r7i" class="tweet-avatar" alt="avatar">
+                            <img src="https://cdn.bsky.app/img/avatar/plain/did:plc:z3bjeqyc72wzrlublyobw7ur/bafkreihdtdvka3yxqanflag7yjvcfstzxlp6knxvm2eyiixdk7h2g3y564" class="tweet-avatar" alt="avatar">
                             <div class="user-names">
-                                <span class="display-name">キリコ</span>
-                                <span class="username">@kirikozatu.bsky.social</span>
+                                <span class="display-name">ミテネちゃん</span>
+                                <span class="username">@mitemitemitene.bsky.social</span>
                             </div>
                         </div>
-                        <span class="tweet-date">2026-06-17 07:06</span>
+                        <span class="tweet-date">2026-06-17 12:38</span>
                     </div>
-                    <p class="tweet-content" style="font-size: 0.9rem; margin-bottom: 10px;">マンダロリアンに沼った人が「我らの道」って言ってるの、「フォースと共にあれ」って言いたくなるのと同じでほっこり。</p>
-                    
+                    <p class="tweet-content" style="font-size: 0.9rem; margin-bottom: 10px;">さあほま本を練ってた時のメモがでてきた　読みてえ〜、これ</p>
+                    <div class="tweet-images"><img src="https://cdn.bsky.app/img/feed_thumbnail/plain/did:plc:z3bjeqyc72wzrlublyobw7ur/bafkreictrwapebibfzo7l6xjhu6hpoq2l2oifn5lav5hu6erqyijznpziy" alt="" class="tweet-media-img"></div>
                     <div style="display: flex; justify-content: flex-end; margin-top: 8px;">
-                        <a href="https://bsky.app/profile/kirikozatu.bsky.social/post/3mogsnlzx7s23" target="_blank" class="origin-link" style="font-size: 0.75rem;">元の投稿 🔗</a>
+                        <a href="https://bsky.app/profile/mitemitemitene.bsky.social/post/3mohf6paaic2r" target="_blank" class="origin-link" style="font-size: 0.75rem;">元の投稿 🔗</a>
                     </div>
                 </div>
             </div>
@@ -774,7 +810,7 @@
             <!-- グループの最後に管理人コメントを追加 -->
             <div class="admin-comment">
                 <div class="admin-comment-title">🐾 管理人コメント</div>
-                <p>みんなが好きな散歩と美味しいものが一緒に楽しめる時間は最高ですね🐾</p>
+                <p>みんなのおうち時間もゆっくりお過ごしくださいね🐾</p>
             </div>
             
             <!-- まとめ単位での「ほっこりした」ボタン（data-idを付与） -->
@@ -798,19 +834,18 @@
                 <div class="mini-tweet" style="background-color: var(--tweet-bg); border: 1px solid var(--tweet-border); border-radius: 16px; padding: 18px; box-shadow: 0 2px 8px var(--card-shadow); margin-bottom: 4px;">
                     <div class="tweet-user-info">
                         <div class="user-profile">
-                            <img src="https://cdn.bsky.app/img/avatar/plain/did:plc:dd64pk4va6axsno6dvjq3nq3/bafkreihnkgq2av5veayrdsimrsofw24rweqrutdcnpitgxxyadv5xio4im" class="tweet-avatar" alt="avatar">
+                            <img src="https://cdn.bsky.app/img/avatar/plain/did:plc:fxqkst3pom3sve25bexr4g6f/bafkreiadqjjq24w6ilpifrjd4qpyld6mn3bmgh7fepmk52mp3h5adbqzmi" class="tweet-avatar" alt="avatar">
                             <div class="user-names">
-                                <span class="display-name">ハルキ🌸💍</span>
-                                <span class="username">@harukivv804.bsky.social</span>
+                                <span class="display-name">banachan</span>
+                                <span class="username">@banachan.bsky.social</span>
                             </div>
                         </div>
-                        <span class="tweet-date">2026-06-17 09:04</span>
+                        <span class="tweet-date">2026-06-17 12:21</span>
                     </div>
-                    <p class="tweet-content" style="font-size: 0.9rem; margin-bottom: 10px;">小野さん
-おやすみありがとうございます！</p>
+                    <p class="tweet-content" style="font-size: 0.9rem; margin-bottom: 10px;">おやすみ！</p>
                     
                     <div style="display: flex; justify-content: flex-end; margin-top: 8px;">
-                        <a href="https://bsky.app/profile/harukivv804.bsky.social/post/3mogza2df6s2s" target="_blank" class="origin-link" style="font-size: 0.75rem;">元の投稿 🔗</a>
+                        <a href="https://bsky.app/profile/banachan.bsky.social/post/3mohebpyeic2l" target="_blank" class="origin-link" style="font-size: 0.75rem;">元の投稿 🔗</a>
                     </div>
                 </div>
             </div>
@@ -818,7 +853,7 @@
             <!-- グループの最後に管理人コメントを追加 -->
             <div class="admin-comment">
                 <div class="admin-comment-title">🐾 管理人コメント</div>
-                <p>小野さん、おやすみ前のお茶の時間も素敵ですね🐾</p>
+                <p>おやすみですね🐾</p>
             </div>
             
             <!-- まとめ単位での「ほっこりした」ボタン（data-idを付与） -->
@@ -2335,6 +2370,7 @@ UCC職人の珈琲　無糖</p>
 
         </main>
 
+        <!-- 右側：サイドバーエリア -->
         <aside class="sidebar">
             
             <div class="sidebar-widget">
@@ -2345,6 +2381,7 @@ UCC職人の珈琲　無糖</p>
                 </p>
             </div>
 
+            <!-- 📅 日付でみる -->
             <div class="sidebar-widget">
                 <h3 class="widget-title">📅 日付でみる</h3>
                 <ul class="widget-list">
@@ -2395,7 +2432,7 @@ UCC職人の珈琲　無糖</p>
 
         // 🔗 メニューのアクティブ下線切り替え
         const currentPath = window.location.pathname.split("/").pop();
-        const navLinks = document.querySelectorAll('.site-nav a');
+        const navLinks = document.querySelectorAll('.site-nav a, .widget-list a');
         navLinks.forEach(link => {
             const href = link.getAttribute('href');
             if (href === currentPath || (currentPath === "" && href === "index.html") || (currentPath === "index.html" && href === "index.html")) {
@@ -2405,7 +2442,7 @@ UCC職人の珈琲　無糖</p>
             }
         });
 
-        // 🍵 【新機能】ほっこりボタンのカウントアップ（ローカルストレージ保存版）
+        // 🍵 ほっこりボタンのカウントアップ（ローカルストレージ保存版）
         function addHokkori(button) {
             const cardId = button.getAttribute('data-id');
             const countSpan = button.querySelector('.count');
@@ -2413,7 +2450,6 @@ UCC職人の珈琲　無糖</p>
             count++;
             countSpan.textContent = count;
             
-            // 💡 あなたのブラウザにカウント数をこっそり保存（メモ）します [2.3.9]
             if (cardId) {
                 localStorage.setItem(cardId, count);
             }
@@ -2424,7 +2460,7 @@ UCC職人の珈琲　無糖</p>
             }, 200);
         }
 
-        // 💡 ページ読み込み時に、ブラウザの記憶から各カードのほっこり数を復元します [2.3.9]
+        // ページ読み込み時に、ブラウザの記憶から各カードのほっこり数を復元します
         window.addEventListener('DOMContentLoaded', () => {
             const hokkoriButtons = document.querySelectorAll('.hokkori-btn');
             hokkoriButtons.forEach(button => {

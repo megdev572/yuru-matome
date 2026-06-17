@@ -496,6 +496,20 @@
             color: var(--meta-color);
         }
 
+        /* 💡 【追加】もしもアフィリエイト「かんたんリンク」がサイドバー内に完璧に縦並びでフィットするように強制補正します */
+        div[id^="msmaflink-"] {
+            width: 100% !important;
+            box-sizing: border-box !important;
+            margin: 0 auto !important;
+        }
+        
+        div[id^="msmaflink-"] > div {
+            border: none !important; /* 二重線を消してブログに馴染ませます */
+            padding: 0 !important;
+            background-color: transparent !important;
+            box-shadow: none !important;
+        }
+
         @media (max-width: 1000px) {
             .main-wrapper {
                 flex-direction: column;
@@ -541,7 +555,6 @@
             <h1 class="site-title">ゆるまとめ ☕</h1>
             <p class="site-subtitle">ココロが少し軽くなる、やさしいつぶやきを集めました</p>
         </div>
-        
         <nav class="site-nav">
             <ul>
                 <li><a href="index.html" id="nav-all">ホーム</a></li>
@@ -554,31 +567,41 @@
 
     <div class="main-wrapper">
 
+        <!-- 📢 左側：アフィリエイト用サイドバー -->
         <aside class="left-sidebar">
-            <div class="sidebar-widget">
-                <h3 class="widget-title">☕ ほっこりPR</h3>
+            <div class="sidebar-widget" style="padding: 12px;">
+                <h3 class="widget-title" style="margin-bottom: 15px;">☕ ほっこりPR</h3>
                 
-                <div class="affiliate-item" style="margin-bottom: 20px; text-align: center;">
-                    <div style="background-color: var(--tweet-bg); border-radius: 12px; padding: 12px; border: 1px dashed var(--header-border);">
-                        <span style="font-size: 2.2rem;">🍵</span>
-                        <h4 style="font-size: 0.8rem; margin: 8px 0 4px; font-weight: bold;">心が休まるほうじ茶</h4>
-                        <p style="font-size: 0.7rem; opacity: 0.8; margin-bottom: 10px; line-height: 1.4;">おやすみ前の新習慣に、優しい香りの一杯を。</p>
-                        <a href="#" style="background-color: var(--link-color); color: #FFF; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; display: inline-block; font-weight: bold;">詳細をみる ➔</a>
-                    </div>
+                <!-- 💡 【1番目の商品】お預かりした本物の「ぜいたくルイボスティー みつりんご」をきれいに組み込みました！ -->
+                <div class="affiliate-item" style="margin-bottom: 24px;">
+                    <!-- START MoshimoAffiliateEasyLink -->
+                    <script type="text/javascript">
+                    (function(b,c,f,g,a,d,e){b.MoshimoAffiliateObject=a;
+                    b[a]=b[a]||function(){arguments.currentScript=c.currentScript
+                    ||c.scripts[c.scripts.length-2];(b[a].q=b[a].q||[]).push(arguments)};
+                    c.getElementById(a)||(d=c.createElement(f),d.src=g,
+                    d.id=a,e=c.getElementsByTagName("body")[0],e.appendChild(d))})
+                    (window,document,"script","//dn.msmstatic.com/site/cardlink/bundle.js?20220329","msmaflink");
+                    msmaflink({"n":"《花弁入り》ぜいたくルイボスティー みつりんご 15個入 ( ノンカフェイン フレーバー アップルティー アレンジルイボスティー フレーバーティー ハーブティー プレゼント ギフト 水出し ティーバッグ ティーパック ティーライフ )","b":"","t":"","d":"https:\/\/thumbnail.image.rakuten.co.jp","c_p":"\/","p":["@0_mall\/tea-life\/cabinet\/rooibos\/arrange\/apple\/93441_thumb.jpg","@0_mall\/tea-life\/cabinet\/rooibos\/arrange\/apple\/93441_01.jpg","@0_gold\/tea-life\/minikuru\/review\/93441.png"],"u":{"u":"https:\/\/item.rakuten.co.jp\/tea-life\/93441\/","t":"rakuten","r_v":""},"v":"2.1","b_l":[{"id":1,"u_tx":"楽天市場で見る","u_bc":"#f76956","u_url":"https:\/\/item.rakuten.co.jp\/tea-life\/93441\/","a_id":5638514,"p_id":54,"pl_id":27059,"pc_id":54,"s_n":"rakuten","u_so":1}],"eid":"2Bo7W","s":"s"});
+                    </script>
+                    <div id="msmaflink-2Bo7W">リンク</div>
+                    <!-- MoshimoAffiliateEasyLink END -->
                 </div>
 
+                <!-- 💡 【2番目の商品】将来「安眠アロマ」などのコードを取得した時用に、いつでもコピペで差し替えられる予備枠を残してあります。 -->
                 <div class="affiliate-item" style="text-align: center;">
                     <div style="background-color: var(--tweet-bg); border-radius: 12px; padding: 12px; border: 1px dashed var(--header-border);">
                         <span style="font-size: 2.2rem;">🧸</span>
                         <h4 style="font-size: 0.8rem; margin: 8px 0 4px; font-weight: bold;">安眠ラベンダーアロマ</h4>
                         <p style="font-size: 0.7rem; opacity: 0.8; margin-bottom: 10px; line-height: 1.4;">枕元にシュッとひと吹きで、眠る前の贅沢な癒し時間。</p>
-                        <a href="#" style="background-color: var(--link-color); color: #FFF; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; display: inline-block; font-weight: bold;">詳細をみる ➔</a>
+                        <a href="#" style="background-color: var(--link-color); color: #FFF; padding: 4px 12px; border-radius: 12px; font-size: 0.75rem; display: inline-block; font-weight: bold;">（ここはまだ見本です）</a>
                     </div>
                 </div>
 
             </div>
         </aside>
 
+        <!-- 中央：メインコンテンツ -->
         <main class="main-container">
 
             <section class="omikuji-section">
@@ -599,6 +622,7 @@
 
         </main>
 
+        <!-- 右側：サイドバーエリア -->
         <aside class="sidebar">
             
             <div class="sidebar-widget">
@@ -609,6 +633,7 @@
                 </p>
             </div>
 
+            <!-- 📅 日付でみる -->
             <div class="sidebar-widget">
                 <h3 class="widget-title">📅 日付でみる</h3>
                 <ul class="widget-list">
@@ -651,7 +676,7 @@
 
         // 🔗 メニューのアクティブ下線切り替え
         const currentPath = window.location.pathname.split("/").pop();
-        const navLinks = document.querySelectorAll('.site-nav a');
+        const navLinks = document.querySelectorAll('.site-nav a, .widget-list a');
         navLinks.forEach(link => {
             const href = link.getAttribute('href');
             if (href === currentPath || (currentPath === "" && href === "index.html") || (currentPath === "index.html" && href === "index.html")) {
@@ -661,7 +686,7 @@
             }
         });
 
-        // 🍵 【新機能】ほっこりボタンのカウントアップ（ローカルストレージ保存版）
+        // 🍵 ほっこりボタンのカウントアップ（ローカルストレージ保存版）
         function addHokkori(button) {
             const cardId = button.getAttribute('data-id');
             const countSpan = button.querySelector('.count');
@@ -669,7 +694,6 @@
             count++;
             countSpan.textContent = count;
             
-            // 💡 あなたのブラウザにカウント数をこっそり保存（メモ）します [2.3.9]
             if (cardId) {
                 localStorage.setItem(cardId, count);
             }
@@ -680,7 +704,7 @@
             }, 200);
         }
 
-        // 💡 ページ読み込み時に、ブラウザの記憶から各カードのほっこり数を復元します [2.3.9]
+        // ページ読み込み時に、ブラウザの記憶から各カードのほっこり数を復元します
         window.addEventListener('DOMContentLoaded', () => {
             const hokkoriButtons = document.querySelectorAll('.hokkori-btn');
             hokkoriButtons.forEach(button => {
